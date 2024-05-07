@@ -1,5 +1,5 @@
 ---
-- name: Create a VIP, pool and pool members
+- name: Create pool
   hosts: all
   connection: local
 
