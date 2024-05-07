@@ -1,0 +1,17 @@
+---
+- name: Create nodes
+  hosts: all
+  connection: local
+
+  tasks:
+    - name: Add nodes
+      f5networks.f5_modules.bigip_node:
+        provider: "{{ provider }}"
+        host: "{{ item.host }}"
+        name: "{{ item.name }}"
+        description: Pushed by AWX
+        monitors:
+        - /Common/https_443
+      with_items:
+        {{ pool_nodes }}
+      delegate_to: localhost
