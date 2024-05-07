@@ -12,6 +12,5 @@
         description: Pushed by AWX
         monitors:
         - /Common/https_443
-      with_items:
-        {{ pool_nodes }}
+      with_items: "{{ pool_nodes }}"
       delegate_to: localhost
