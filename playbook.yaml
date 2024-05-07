@@ -1,0 +1,14 @@
+---
+- name: Create a VIP, pool and pool members
+  hosts: all
+  connection: local
+
+  tasks:
+    - name: Create a pool
+      f5networks.f5_modules.bigip_pool:
+        provider: "{{ provider }}"
+        lb_method: ratio-member
+        name: "{{ pool_name }}"
+        description: Pushed by Ansible
+        slow_ramp_time: 120
+      delegate_to: localhost
