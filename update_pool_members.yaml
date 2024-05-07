@@ -1,0 +1,15 @@
+---
+- name: Update pool members
+  hosts: all
+  connection: local
+
+  tasks:
+    - name: Add members to pool
+      f5networks.f5_modules.bigip_pool_member:
+        provider: "{{ provider }}"
+        host: "{{ item.host }}"
+        name: "{{ item.name }}"
+        pool: "{{ pool_name }}"
+        port: 443
+      with_items: "{{ pool_nodes }}"
+      delegate_to: localhost

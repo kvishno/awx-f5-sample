@@ -1,0 +1,16 @@
+---
+- name: Create VS
+  hosts: all
+  connection: local
+
+  tasks:
+    - name: Add virtual server
+      f5networks.f5_modules.bigip_virtual_server:
+        provider: "{{ provider }}"
+        state: present
+        partition: Common
+        name: "{{ vs_name }}"
+        description: Pushed by AWX
+        destination: 4.20.13.37
+        port: 443
+        pool: "{{ pool_name }}"
