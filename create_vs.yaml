@@ -11,6 +11,6 @@
         partition: Common
         name: "{{ vs_name }}"
         description: Pushed by AWX
-        destination: 4.20.13.37
+        destination: "{{ vs_destination_ip }}"
         port: 443
         pool: "{{ pool_name }}"
